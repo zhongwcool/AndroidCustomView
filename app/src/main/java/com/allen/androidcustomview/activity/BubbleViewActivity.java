@@ -1,10 +1,14 @@
 package com.allen.androidcustomview.activity;
 
+import android.graphics.Color;
 import android.graphics.PointF;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,7 +17,6 @@ import com.allen.androidcustomview.R;
 import com.allen.androidcustomview.bean.CircleBean;
 import com.allen.androidcustomview.utils.DisplayUtils;
 import com.allen.androidcustomview.widget.BubbleView;
-import com.allen.androidcustomview.widget.WaveViewByBezier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +34,29 @@ public class BubbleViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
+            );
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    //| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                //window.setStatusBarColor(getColor(R.color.colorThemeMain));
+                window.setStatusBarColor(Color.TRANSPARENT);
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                //window.setStatusBarColor(getResources().getColor(R.color.colorThemeMain));
+                window.setStatusBarColor(Color.TRANSPARENT);
+            }
+            //window.setNavigationBarColor(Color.TRANSPARENT);
+        }
         setContentView(R.layout.activity_bubble_view);
-        hxbIv = (ImageView) findViewById(R.id.hxb_iv);
-        hxbTv = (TextView) findViewById(R.id.center_tv);
-        bezierView = (BubbleView) findViewById(R.id.circle_view);
-        button = (Button) findViewById(R.id.start_btn);
+        hxbIv = findViewById(R.id.hxb_iv);
+        hxbTv = findViewById(R.id.center_tv);
+        bezierView = findViewById(R.id.circle_view);
+        button = findViewById(R.id.start_btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,11 +66,10 @@ public class BubbleViewActivity extends AppCompatActivity {
             }
         });
 
-
         initPoint();
 
         bezierView.setCircleBeen(circleBeanList);
-//        bezierView.createInAnimation();
+        //bezierView.createInAnimation();
     }
 
     private void initPoint() {

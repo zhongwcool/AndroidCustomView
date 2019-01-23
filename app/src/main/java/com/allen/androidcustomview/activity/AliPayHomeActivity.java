@@ -1,11 +1,13 @@
 package com.allen.androidcustomview.activity;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 
 import com.allen.androidcustomview.R;
 
@@ -29,7 +31,15 @@ public class AliPayHomeActivity extends AppCompatActivity implements AppBarLayou
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                window.setStatusBarColor(getResources().getColor(R.color.aliPay_bar_color, getTheme()));
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.setStatusBarColor(getResources().getColor(R.color.aliPay_bar_color));
+            }
+            //window.setNavigationBarColor(Color.TRANSPARENT);
+        }
         setContentView(R.layout.activity_alipay_home);
         initView();
         mAppBarLayout.addOnOffsetChangedListener(this);

@@ -1,12 +1,12 @@
 package com.allen.androidcustomview.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.allen.androidcustomview.R;
+import com.allen.androidcustomview.base.BaseActivity;
 import com.allen.androidcustomview.widget.RadarWaveView;
 
-public class RadarActivity extends AppCompatActivity {
+public class RadarActivity extends BaseActivity {
 
     private RadarWaveView radarView;
 
@@ -15,7 +15,7 @@ public class RadarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_radar);
 
-        radarView = (RadarWaveView) findViewById(R.id.radar_view);
+        radarView = findViewById(R.id.radar_view);
     }
 
     @Override
