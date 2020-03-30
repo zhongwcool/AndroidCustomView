@@ -1,14 +1,15 @@
 package com.allen.androidcustomview.widget.banner;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 
 import com.allen.androidcustomview.R;
 import com.allen.androidcustomview.widget.banner.adapter.BannerViewPagerAdapter;
@@ -57,8 +58,8 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
 
     private void init(Context context) {
         LayoutInflater.from(context).inflate(R.layout.banner_view_layout, this);
-        mViewPager = (ViewPager) findViewById(R.id.banner_view_pager);
-        mIndicatorContainer = (LinearLayout) findViewById(R.id.banner_indicator_container);
+        mViewPager = findViewById(R.id.banner_view_pager);
+        mIndicatorContainer = findViewById(R.id.banner_indicator_container);
 
         mPagerOptions = new PagerOptions.Builder(context).build();
 

@@ -1,11 +1,12 @@
 package com.allen.androidcustomview.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.allen.androidcustomview.R;
 import com.allen.androidcustomview.adapter.HoverAdapter;
@@ -62,9 +63,9 @@ public class HoverItemActivity extends AppCompatActivity {
 
         userBeans = filledData(getData());
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        indexView = (IndexView) findViewById(R.id.index_view);
-        showTextDialog = (TextView) findViewById(R.id.show_text_dialog);
+        recyclerView = findViewById(R.id.recycler_view);
+        indexView = findViewById(R.id.index_view);
+        showTextDialog = findViewById(R.id.show_text_dialog);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

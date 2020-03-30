@@ -4,9 +4,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 /**
@@ -185,11 +186,7 @@ public class HoverItemDecoration extends RecyclerView.ItemDecoration {
             String prevItemText = bindItemTextCallback.getItemText(position - 1);
             String currentItemText = bindItemTextCallback.getItemText(position);
             //上一个和当前位置的值一样说明是同一个组的否则就是新的一组
-            if (prevItemText.equals(currentItemText)) {
-                return false;
-            } else {
-                return true;
-            }
+            return !prevItemText.equals(currentItemText);
 
         }
     }

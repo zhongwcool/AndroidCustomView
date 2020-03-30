@@ -1,11 +1,12 @@
 package com.allen.androidcustomview.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.allen.androidcustomview.R;
 import com.allen.androidcustomview.widget.CircleProgressBarView;
@@ -30,15 +31,15 @@ public class ProgressBarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregress_bar);
 
-        circleProgressBarView = (CircleProgressBarView) findViewById(R.id.circle_progress_view);
+        circleProgressBarView = findViewById(R.id.circle_progress_view);
 
-        horizontalProgressBar = (HorizontalProgressBar) findViewById(R.id.horizontal_progress_view);
-        productProgressBar = (ProductProgressBar) findViewById(R.id.product_progress_view);
-        loadingView = (LoadingView) findViewById(R.id.loading_view);
-        loadingLineView = (LoadingLineView) findViewById(R.id.loading_line_view);
+        horizontalProgressBar = findViewById(R.id.horizontal_progress_view);
+        productProgressBar = findViewById(R.id.product_progress_view);
+        loadingView = findViewById(R.id.loading_view);
+        loadingLineView = findViewById(R.id.loading_line_view);
 
-        textView = (TextView) findViewById(R.id.progress_tv);
-        button = (Button) findViewById(R.id.startAnimationBtn);
+        textView = findViewById(R.id.progress_tv);
+        button = findViewById(R.id.startAnimationBtn);
 
         circleProgressBarView.setProgressWithAnimation(60);
         circleProgressBarView.setProgressListener(new CircleProgressBarView.ProgressListener() {

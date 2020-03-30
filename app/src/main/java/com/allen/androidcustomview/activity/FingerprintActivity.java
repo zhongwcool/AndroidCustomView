@@ -1,13 +1,14 @@
 package com.allen.androidcustomview.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
 
 import com.allen.androidcustomview.R;
 import com.allen.androidcustomview.utils.FingerprintUtil;
@@ -28,7 +29,7 @@ public class FingerprintActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_finger_print);
 
-        resultTv = (TextView) findViewById(R.id.result_tv);
+        resultTv = findViewById(R.id.result_tv);
         findViewById(R.id.open_finger_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
